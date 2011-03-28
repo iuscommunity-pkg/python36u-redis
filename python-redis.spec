@@ -3,8 +3,8 @@
 %global upstream_name redis
 
 Name:           python-%{upstream_name}
-Version:        2.0.0
-Release:        2%{?dist}
+Version:        2.2.4
+Release:        1%{?dist}
 Summary:        A Python client for redis
 
 Group:          Development/Languages
@@ -39,6 +39,9 @@ rm -rf %{buildroot}
 %{python_sitelib}/%{upstream_name}-%{version}-*.egg-info
 
 %changelog
+* Sun Mar 27 2011 Silas Sewell <silas@sewell.ch> - 2.2.4-1
+- Update to 2.2.4
+
 * Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
