@@ -3,7 +3,7 @@
 %global upstream_name redis
 
 Name:           python-%{upstream_name}
-Version:        2.2.4
+Version:        2.4.9
 Release:        1%{?dist}
 Summary:        A Python client for redis
 
@@ -39,6 +39,9 @@ rm -rf %{buildroot}
 %{python_sitelib}/%{upstream_name}-%{version}-*.egg-info
 
 %changelog
+* Sun Jul 24 2011 Silas Sewell <silas@sewell.org> - 2.4.9-1
+- Update to 2.4.9
+
 * Sun Mar 27 2011 Silas Sewell <silas@sewell.ch> - 2.2.4-1
 - Update to 2.2.4
 
