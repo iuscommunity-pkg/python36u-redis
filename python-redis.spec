@@ -3,14 +3,14 @@
 %global upstream_name redis
 
 Name:           python-%{upstream_name}
-Version:        2.4.9
-Release:        3%{?dist}
+Version:        2.7.2
+Release:        1%{?dist}
 Summary:        A Python client for redis
 
 Group:          Development/Languages
 License:        MIT
 URL:            http://github.com/andymccurdy/redis-py
-Source0:        http://github.com/downloads/andymccurdy/redis-py/%{upstream_name}-%{version}.tar.gz
+Source0:        http://pypi.python.org/packages/source/r/redis/redis-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -39,6 +39,9 @@ rm -rf %{buildroot}
 %{python_sitelib}/%{upstream_name}-%{version}-*.egg-info
 
 %changelog
+* Thu Dec 27 2012 Silas Sewell <silas@sewell.org> - 2.7.2-1
+- Update to 2.7.2
+
 * Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.4.9-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
