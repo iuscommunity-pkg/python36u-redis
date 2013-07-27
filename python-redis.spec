@@ -16,11 +16,13 @@ Source0:        http://pypi.python.org/packages/source/r/redis/redis-%{version}.
 BuildArch:      noarch
 BuildRequires:  python-devel
 BuildRequires:  python-py
+BuildRequires:  pytest
 
 %if 0%{?with_python3}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-py
+BuildRequires:  python3-pytest
 %endif
 
 %description
