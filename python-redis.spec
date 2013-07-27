@@ -17,6 +17,7 @@ BuildArch:      noarch
 BuildRequires:  python-devel
 BuildRequires:  python-py
 BuildRequires:  pytest
+BuildRequires:  redis
 
 %if 0%{?with_python3}
 BuildRequires:  python3-devel
@@ -64,6 +65,7 @@ popd
 %{__python} setup.py install -O1 --skip-build --root %{buildroot}
 
 %check
+redis-server &
 %if 0%{?with_python3}
 pushd %{py3dir}
 %{__python3} setup.py test
@@ -71,6 +73,7 @@ popd
 %endif
 
 %{__python} setup.py test
+kill %1
 
 %files
 %defattr(-,root,root,-)
