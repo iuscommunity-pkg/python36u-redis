@@ -12,7 +12,6 @@ Group:          Development/Languages
 License:        MIT
 URL:            http://github.com/andymccurdy/redis-py
 Source0:        http://pypi.python.org/packages/source/r/redis/redis-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
 BuildRequires:  python-devel
@@ -54,8 +53,6 @@ popd
 %{__python} setup.py build
 
 %install
-rm -rf %{buildroot}
-
 %if 0%{?with_python3}
 pushd %{py3dir}
 %{__python3} setup.py install --skip-build --root=%{buildroot}
@@ -63,9 +60,6 @@ popd
 %endif
 
 %{__python} setup.py install -O1 --skip-build --root %{buildroot}
-
-%clean
-rm -rf %{buildroot}
 
 %check
 %if 0%{?with_python3}
@@ -95,6 +89,7 @@ popd
 - Update to 2.7.6
 - Run the test suite
 - Add a python3 subpackage
+- Remove obsolete buildroot tag and cleanup
 
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.7.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
