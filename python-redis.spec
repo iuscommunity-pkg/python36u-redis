@@ -15,6 +15,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
 BuildRequires:  python-devel
+BuildRequires:  python-py
 
 %description
 This is a Python interface to the Redis key-value store.
@@ -32,6 +33,9 @@ rm -rf %{buildroot}
 %clean
 rm -rf %{buildroot}
 
+%check
+%{__python} setup.py test
+
 %files
 %defattr(-,root,root,-)
 %doc CHANGES LICENSE README.md
@@ -41,6 +45,7 @@ rm -rf %{buildroot}
 %changelog
 * Sat Jul 27 2013 Luke Macken <lmacken@redhat.com> - 2.7.6-1
 - Update to 2.7.6
+- Run the test suite
 
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.7.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
