@@ -69,15 +69,15 @@ popd
 kill %1
 
 %files
-%doc CHANGES LICENSE PKG-INFO README.rst
+%doc CHANGES LICENSE README.rst
 %{python2_sitelib}/%{upstream_name}
-%{python2_sitelib}/%{upstream_name}-%{version}-py%{python3_version}.egg-info
+%{python2_sitelib}/%{upstream_name}-%{version}-py%{python2_version}.egg-info
 
 %if 0%{?with_python3}
 %files -n python3-redis
-%doc CHANGES LICENSE PKG-INFO README.rst
+%doc CHANGES LICENSE README.rst
 %{python3_sitelib}/%{upstream_name}
-%{python3_sitelib}/%{upstream_name}-%{version}-py%{python2_version}.egg-info
+%{python3_sitelib}/%{upstream_name}-%{version}-py%{python3_version}.egg-info
 %endif
 
 %changelog
