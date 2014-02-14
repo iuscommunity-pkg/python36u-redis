@@ -1,45 +1,38 @@
-%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-
 %global with_python3 1
 %global upstream_name redis
 
 Name:           python-%{upstream_name}
-Version:        2.7.6
+Version:        2.9.1
 Release:        1%{?dist}
-Summary:        A Python client for redis
-
-Group:          Development/Languages
+Summary:        Python 2 client for redis
 License:        MIT
 URL:            http://github.com/andymccurdy/redis-py
 Source0:        http://pypi.python.org/packages/source/r/redis/redis-%{version}.tar.gz
-
 BuildArch:      noarch
-BuildRequires:  python-devel
+BuildRequires:  python2-devel
+BuildRequires:  python-setuptools
 BuildRequires:  python-py
 BuildRequires:  pytest
 BuildRequires:  redis
 
+%description
+This is a Python 2 interface to the Redis key-value store.
+
 %if 0%{?with_python3}
+%package -n     python3-redis
+Summary:        Python 3 client for redis
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-py
 BuildRequires:  python3-pytest
-%endif
-
-%description
-This is a Python interface to the Redis key-value store.
-
-%if 0%{?with_python3}
-%package -n python3-redis
-Summary:        A Python3 client for redis
-Group:          Development/Languages
 
 %description -n python3-redis
-This is a Python interface to the Redis key-value store.
+This is a Python 3 interface to the Redis key-value store.
 %endif
 
 %prep
-%setup -q -n %{upstream_name}-%{version}
+%setup -qn %{upstream_name}-%{version}
+rm -rf %{upstream_name}.egg-info
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
@@ -53,16 +46,16 @@ pushd %{py3dir}
 popd
 %endif
 
-%{__python} setup.py build
+%{__python2} setup.py build
 
 %install
 %if 0%{?with_python3}
 pushd %{py3dir}
-%{__python3} setup.py install --skip-build --root=%{buildroot}
+%{__python3} setup.py install -O1 --skip-build --root=%{buildroot}
 popd
 %endif
 
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+%{__python2} setup.py install -O1 --skip-build --root %{buildroot}
 
 %check
 redis-server &
@@ -72,24 +65,27 @@ pushd %{py3dir}
 popd
 %endif
 
-%{__python} setup.py test
+%{__python2} setup.py test
 kill %1
 
 %files
-%defattr(-,root,root,-)
-%doc CHANGES LICENSE README.rst
-%{python_sitelib}/%{upstream_name}
-%{python_sitelib}/%{upstream_name}-%{version}-*.egg-info
+%doc CHANGES LICENSE PKG-INFO README.rst
+%{python2_sitelib}/%{upstream_name}
+%{python2_sitelib}/%{upstream_name}-%{version}-py%{python3_version}.egg-info
 
 %if 0%{?with_python3}
 %files -n python3-redis
-%defattr(-,root,root,-)
-%doc CHANGES LICENSE README.rst
+%doc CHANGES LICENSE PKG-INFO README.rst
 %{python3_sitelib}/%{upstream_name}
-%{python3_sitelib}/%{upstream_name}-%{version}-*.egg-info
+%{python3_sitelib}/%{upstream_name}-%{version}-py%{python2_version}.egg-info
 %endif
 
 %changelog
+* Fri Feb 14 2014 Christopher Meng <rpm@cicku.me> - 2.9.1-1
+- Update to 2.9.1
+- Use generated egg instead of bundled egg
+- Cleanup again
+
 * Sat Jul 27 2013 Luke Macken <lmacken@redhat.com> - 2.7.6-1
 - Update to 2.7.6
 - Run the test suite
