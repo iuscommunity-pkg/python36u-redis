@@ -3,7 +3,7 @@
 
 Name:           python-%{upstream_name}
 Version:        2.9.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python 2 client for redis
 License:        MIT
 URL:            http://github.com/andymccurdy/redis-py
@@ -81,6 +81,9 @@ kill %1
 %endif
 
 %changelog
+* Wed May 28 2014 Kalev Lember <kalevlember@gmail.com> - 2.9.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Changes/Python_3.4
+
 * Fri Feb 14 2014 Christopher Meng <rpm@cicku.me> - 2.9.1-1
 - Update to 2.9.1
 - Use generated egg instead of bundled egg
