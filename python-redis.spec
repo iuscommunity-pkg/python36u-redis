@@ -3,7 +3,7 @@
 
 Name:           python-%{upstream_name}
 Version:        2.9.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python 2 client for redis
 License:        MIT
 URL:            http://github.com/andymccurdy/redis-py
@@ -81,6 +81,9 @@ kill %1
 %endif
 
 %changelog
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.9.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Wed May 28 2014 Kalev Lember <kalevlember@gmail.com> - 2.9.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Changes/Python_3.4
 
