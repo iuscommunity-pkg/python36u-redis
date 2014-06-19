@@ -1,10 +1,13 @@
+%if 0%{?fedora} >= 13 || 0%{?el} >= 8
 %global with_python3 1
+%endif
+
 %global upstream_name redis
 
 Name:           python-%{upstream_name}
-Version:        2.9.1
-Release:        3%{?dist}
-Summary:        Python 2 client for redis
+Version:        2.10.1
+Release:        1%{?dist}
+Summary:        Python 2.x interface to the Redis key-value store
 License:        MIT
 URL:            http://github.com/andymccurdy/redis-py
 Source0:        http://pypi.python.org/packages/source/r/redis/redis-%{version}.tar.gz
@@ -20,7 +23,7 @@ This is a Python 2 interface to the Redis key-value store.
 
 %if 0%{?with_python3}
 %package -n     python3-redis
-Summary:        Python 3 client for redis
+Summary:        Python 3.x interface to the Redis key-value store
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-py
@@ -45,7 +48,6 @@ pushd %{py3dir}
 %{__python3} setup.py build
 popd
 %endif
-
 %{__python2} setup.py build
 
 %install
@@ -64,7 +66,6 @@ pushd %{py3dir}
 %{__python3} setup.py test
 popd
 %endif
-
 %{__python2} setup.py test
 kill %1
 
@@ -81,6 +82,9 @@ kill %1
 %endif
 
 %changelog
+* Thu Jun 19 2014 Christopher Meng <rpm@cicku.me> - 2.10.1-1
+- Update to 2.10.1
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.9.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
