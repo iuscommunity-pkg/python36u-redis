@@ -5,9 +5,9 @@
 %global upstream_name redis
 
 Name:           python-%{upstream_name}
-Version:        2.10.1
+Version:        2.10.2
 Release:        1%{?dist}
-Summary:        Python 2.x interface to the Redis key-value store
+Summary:        Python 2 interface to the Redis key-value store
 License:        MIT
 URL:            http://github.com/andymccurdy/redis-py
 Source0:        http://pypi.python.org/packages/source/r/redis/redis-%{version}.tar.gz
@@ -23,7 +23,7 @@ This is a Python 2 interface to the Redis key-value store.
 
 %if 0%{?with_python3}
 %package -n     python3-redis
-Summary:        Python 3.x interface to the Redis key-value store
+Summary:        Python 3 interface to the Redis key-value store
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-py
@@ -35,7 +35,7 @@ This is a Python 3 interface to the Redis key-value store.
 
 %prep
 %setup -qn %{upstream_name}-%{version}
-rm -rf %{upstream_name}.egg-info
+rm -frv %{upstream_name}.egg-info
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
@@ -56,7 +56,6 @@ pushd %{py3dir}
 %{__python3} setup.py install -O1 --skip-build --root=%{buildroot}
 popd
 %endif
-
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
 
 %check
@@ -82,6 +81,9 @@ kill %1
 %endif
 
 %changelog
+* Tue Aug 12 2014 Christopher Meng <rpm@cicku.me> - 2.10.2-1
+- Update to 2.10.2
+
 * Thu Jun 19 2014 Christopher Meng <rpm@cicku.me> - 2.10.1-1
 - Update to 2.10.1
 
