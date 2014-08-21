@@ -5,7 +5,7 @@
 %global upstream_name redis
 
 Name:           python-%{upstream_name}
-Version:        2.10.2
+Version:        2.10.3
 Release:        1%{?dist}
 Summary:        Python 2 interface to the Redis key-value store
 License:        MIT
@@ -81,6 +81,9 @@ kill %1
 %endif
 
 %changelog
+* Thu Aug 21 2014 Christopher Meng <rpm@cicku.me> - 2.10.3-1
+- Update to 2.10.3
+
 * Tue Aug 12 2014 Christopher Meng <rpm@cicku.me> - 2.10.2-1
 - Update to 2.10.2
 
