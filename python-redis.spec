@@ -5,8 +5,8 @@
 %global upstream_name redis
 
 Name:           python-%{upstream_name}
-Version:        2.10.3
-Release:        5%{?dist}
+Version:        2.10.5
+Release:        1%{?dist}
 Summary:        Python 2 interface to the Redis key-value store
 License:        MIT
 URL:            http://github.com/andymccurdy/redis-py
@@ -84,6 +84,9 @@ kill %1
 %endif
 
 %changelog
+* Mon Apr 04 2016 Ralph Bean <rbean@redhat.com> - 2.10.5-1
+- new version
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.3-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
