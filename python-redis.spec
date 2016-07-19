@@ -6,7 +6,7 @@
 
 Name:           python-%{upstream_name}
 Version:        2.10.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python 2 interface to the Redis key-value store
 License:        MIT
 URL:            http://github.com/andymccurdy/redis-py
@@ -84,6 +84,9 @@ kill %1
 %endif
 
 %changelog
+* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.10.5-2
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+
 * Mon Apr 04 2016 Ralph Bean <rbean@redhat.com> - 2.10.5-1
 - new version
 
