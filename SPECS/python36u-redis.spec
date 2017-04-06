@@ -43,13 +43,15 @@ kill %1
 
 
 %files
-%doc CHANGES LICENSE README.rst
+%license LICENSE
+%doc CHANGES README.rst
 %{python36_sitelib}/%{upstream_name}*
 
 
 %changelog
 * Thu Apr 06 2017 Carl George <carl.george@rackspace.com> - 2.10.5-1.ius
 - Port from Fedora to IUS
+- Properly handle license
 
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.5-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
