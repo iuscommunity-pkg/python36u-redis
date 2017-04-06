@@ -1,6 +1,8 @@
 %global upstream_name redis
 %global python python36u
 
+%bcond_with tests
+
 Name:           %{python}-%{upstream_name}
 Version:        2.10.5
 Release:        1.ius%{?dist}
@@ -11,9 +13,11 @@ Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{v
 BuildArch:      noarch
 BuildRequires:  %{python}-devel
 BuildRequires:  %{python}-setuptools
+%if %{with tests}
 BuildRequires:  %{python}-py
 BuildRequires:  %{python}-pytest
 BuildRequires:  redis
+%endif
 
 
 %description
@@ -24,8 +28,10 @@ This is a Python 3 interface to the Redis key-value store.
 %setup -qn %{upstream_name}-%{version}
 rm -frv %{upstream_name}.egg-info
 
+%if %{with tests}
 # This test passes locally but fails in koji...
 rm tests/test_commands.py*
+%endif
 
 
 %build
@@ -36,10 +42,12 @@ rm tests/test_commands.py*
 %{py36_install}
 
 
+%if %{with tests}
 %check
 redis-server &
 %{__python36} setup.py test
 kill %1
+%endif
 
 
 %files
@@ -52,6 +60,7 @@ kill %1
 * Thu Apr 06 2017 Carl George <carl.george@rackspace.com> - 2.10.5-1.ius
 - Port from Fedora to IUS
 - Properly handle license
+- Conditionalize test suite
 
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.5-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
