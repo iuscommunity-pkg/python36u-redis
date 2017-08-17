@@ -4,12 +4,12 @@
 %bcond_with tests
 
 Name:           %{python}-%{upstream_name}
-Version:        2.10.5
+Version:        2.10.6
 Release:        1.ius%{?dist}
 Summary:        Python interface to the Redis key-value store
 License:        MIT
 URL:            https://github.com/andymccurdy/redis-py
-Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
+Source0:        https://pypi.io/packages/source/r/redis/%{upstream_name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  %{python}-devel
 BuildRequires:  %{python}-setuptools
@@ -57,6 +57,10 @@ kill %1
 
 
 %changelog
+* Thu Aug 17 2017 Ben Harper <ben.harper@rackspace.com> - 2.10.6-1.ius
+- Latest upstream
+- update Source0
+
 * Thu Apr 06 2017 Carl George <carl.george@rackspace.com> - 2.10.5-1.ius
 - Port from Fedora to IUS
 - Properly handle license
