@@ -4,7 +4,7 @@
 %bcond_with tests
 
 Name:           %{python}-%{upstream_name}
-Version:        2.10.6
+Version:        3.0.1
 Release:        1.ius%{?dist}
 Summary:        Python interface to the Redis key-value store
 License:        MIT
@@ -57,6 +57,9 @@ kill %1
 
 
 %changelog
+* Fri Dec 7 2018 evitalis <evitalis@users.noreply.github.com> 3.0.1-1.ius
+- Latest upstream
+
 * Thu Aug 17 2017 Ben Harper <ben.harper@rackspace.com> - 2.10.6-1.ius
 - Latest upstream
 - update Source0
