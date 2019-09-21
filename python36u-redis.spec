@@ -5,7 +5,7 @@
 
 Name:           %{python}-%{upstream_name}
 Version:        2.10.6
-Release:        1.ius%{?dist}
+Release:        1%{?dist}
 Summary:        Python interface to the Redis key-value store
 License:        MIT
 URL:            https://github.com/andymccurdy/redis-py
