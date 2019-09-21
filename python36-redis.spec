@@ -1,11 +1,11 @@
 %global upstream_name redis
-%global python python36u
+%global python python36
 
 %bcond_with tests
 
 Name:           %{python}-%{upstream_name}
 Version:        2.10.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python interface to the Redis key-value store
 License:        MIT
 URL:            https://github.com/andymccurdy/redis-py
@@ -18,6 +18,10 @@ BuildRequires:  %{python}-py
 BuildRequires:  %{python}-pytest
 BuildRequires:  redis
 %endif
+
+# Rename from python36u-gunicorn
+Provides: python36u-%{srcname} = %{version}-%{release}
+Obsoletes: python36u-%{srcname} < 2.10.6-2
 
 
 %description
@@ -57,6 +61,9 @@ kill %1
 
 
 %changelog
+* Sat Sep 21 2019 Carl George <carl@george.computer> - 2.10.6-2
+- Rename to python36-setuptools
+
 * Thu Aug 17 2017 Ben Harper <ben.harper@rackspace.com> - 2.10.6-1.ius
 - Latest upstream
 - update Source0
