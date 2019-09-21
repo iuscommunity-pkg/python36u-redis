@@ -1,6 +1,10 @@
 %global upstream_name redis
 %global python python36
 
+%if %{defined el6}
+%global __python3 /usr/bin/python3.6
+%endif
+
 %bcond_with tests
 
 Name:           %{python}-%{upstream_name}
@@ -39,17 +43,17 @@ rm tests/test_commands.py*
 
 
 %build
-%{py36_build}
+%py3_build
 
 
 %install
-%{py36_install}
+%py3_install
 
 
 %if %{with tests}
 %check
 redis-server &
-%{__python36} setup.py test
+%{__python3} setup.py test
 kill %1
 %endif
 
@@ -57,12 +61,14 @@ kill %1
 %files
 %license LICENSE
 %doc CHANGES README.rst
-%{python36_sitelib}/%{upstream_name}*
+%{python3_sitelib}/%{upstream_name}
+%{python3_sitelib}/%{upstream_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
 * Sat Sep 21 2019 Carl George <carl@george.computer> - 2.10.6-2
 - Rename to python36-setuptools
+- Switch to EPEL python3 macros
 
 * Thu Aug 17 2017 Ben Harper <ben.harper@rackspace.com> - 2.10.6-1.ius
 - Latest upstream
