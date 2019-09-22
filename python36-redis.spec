@@ -67,7 +67,7 @@ kill %1
 
 %changelog
 * Sat Sep 21 2019 Carl George <carl@george.computer> - 2.10.6-2
-- Rename to python36-setuptools
+- Rename to python36-redis
 - Switch to EPEL python3 macros
 
 * Thu Aug 17 2017 Ben Harper <ben.harper@rackspace.com> - 2.10.6-1.ius
