@@ -23,7 +23,7 @@ BuildRequires:  %{python}-pytest
 BuildRequires:  redis
 %endif
 
-# Rename from python36u-gunicorn
+# Rename from python36u-redis
 Provides: python36u-%{srcname} = %{version}-%{release}
 Obsoletes: python36u-%{srcname} < 2.10.6-2
 
